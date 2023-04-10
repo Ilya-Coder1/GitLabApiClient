@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using GitLabApiClient.Internal.Paths;
 using GitLabApiClient.Models.AwardEmojis.Responses;
+using GitLabApiClient.Models.Commits.Responses;
 using GitLabApiClient.Models.Discussions.Responses;
 using GitLabApiClient.Models.MergeRequests.Requests;
 using GitLabApiClient.Models.MergeRequests.Responses;
@@ -41,11 +42,20 @@ namespace GitLabApiClient
         Task<MergeRequest> GetAsync(ProjectId projectId, int mergeRequestId);
 
         /// <summary>
+        /// List diffs of the files changed in a merge request
+        /// </summary>
+        /// <param name="projectId">The ID, path or <see cref="Project"/> of the project.</param>
+        /// <param name="mergeRequestId">The Internal Merge Request Id.</param>
+        /// <returns></returns>
+        Task<IList<Diff>> GetDiffAsync(ProjectId projectId, int mergeRequestId);
+
+        /// <summary>
         /// Creates merge request.
         /// </summary>
         /// <returns>The newly created merge request.</returns>
         /// <param name="projectId">The ID, path or <see cref="Project"/> of the project.</param>
         /// <param name="request">Create Merge request.</param>
+
         Task<MergeRequest> CreateAsync(ProjectId projectId, CreateMergeRequest request);
 
         /// <summary>

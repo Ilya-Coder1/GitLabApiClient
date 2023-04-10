@@ -6,6 +6,7 @@ using GitLabApiClient.Internal.Http;
 using GitLabApiClient.Internal.Paths;
 using GitLabApiClient.Internal.Queries;
 using GitLabApiClient.Models.AwardEmojis.Responses;
+using GitLabApiClient.Models.Commits.Responses;
 using GitLabApiClient.Models.Discussions.Responses;
 using GitLabApiClient.Models.MergeRequests.Requests;
 using GitLabApiClient.Models.MergeRequests.Responses;
@@ -84,6 +85,15 @@ namespace GitLabApiClient
         /// <returns>Shows information about a single merge request.</returns>
         public async Task<MergeRequest> GetAsync(ProjectId projectId, int mergeRequestId)
             => await _httpFacade.Get<MergeRequest>($"projects/{projectId}/merge_requests/{mergeRequestId}");
+
+        /// <summary>
+        /// List diffs of the files changed in a merge request
+        /// </summary>
+        /// <param name="projectId">The ID, path or <see cref="Project"/> of the project.</param>
+        /// <param name="mergeRequestId">The Internal Merge Request Id.</param>
+        public async Task<IList<Diff>> GetDiffAsync(ProjectId projectId, int mergeRequestId)
+            => await _httpFacade.Get<IList<Diff>>($"/projects/{projectId}/merge_requests/{mergeRequestId}/diffs");
+
         /// <summary>
         /// Creates merge request.
         /// </summary>
