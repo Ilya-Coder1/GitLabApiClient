@@ -166,8 +166,8 @@ namespace GitLabApiClient
         /// <param name="projectId">The ID, path or <see cref="Project"/> of the project.</param>
         /// <param name="mergeRequestId">The Internal Merge Request Id.</param>
         /// <returns>Get a list of merge request pipelines.</returns>
-        public async Task<IList<Pipeline>> GetPipelinesAsync(ProjectId projectId, int mergeRequestId)
-            => await _httpFacade.Get<List<Pipeline>>($"projects/{projectId}/merge_requests/{mergeRequestId}/pipelines");
+        public async Task<IList<Pipeline>> GetPipelinesAsync(ProjectId projectId, int mergeRequestIid)
+            => await _httpFacade.Get<List<Pipeline>>($"projects/{projectId}/merge_requests/{mergeRequestIid}/pipelines");
 
         /// <summary>
         /// Retrieves discussions of a merge request.
