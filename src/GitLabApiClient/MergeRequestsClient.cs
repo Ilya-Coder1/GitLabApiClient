@@ -177,6 +177,10 @@ namespace GitLabApiClient
         public async Task<IList<Discussion>> GetDiscussionsAsync(ProjectId projectId, int mergeRequestIid) =>
             await _httpFacade.GetPagedList<Discussion>($"projects/{projectId}/merge_requests/{mergeRequestIid}/discussions");
 
+        public async Task CreateCommentReply(ProjectId projectId, int mergeRequestIid, int discussionId, string body)
+        {
+            await _httpFacade.Post($"projects/{projectId}/merge_requests/{mergeRequestIid}/discussions/{discussionId}/notes?body={body}");
+        }
         /// <summary>
         /// Retrieves a list of all award emoji for a specified merge request.
         /// </summary>

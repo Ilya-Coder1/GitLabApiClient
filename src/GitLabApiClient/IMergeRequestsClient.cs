@@ -116,6 +116,8 @@ namespace GitLabApiClient
         /// <param name="mergeRequestIid">Iid of the merge request.</param>
         Task<IList<Discussion>> GetDiscussionsAsync(ProjectId projectId, int mergeRequestIid);
 
+        Task CreateCommentReply(ProjectId projectId, int mergeRequestIid, int discussionId, string body);
+
         /// <summary>
         /// Retrieves a list of all award emoji for a specified merge request.
         /// </summary>
